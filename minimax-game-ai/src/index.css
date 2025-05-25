@@ -1,3 +1,13 @@
+
+/* Custom styles */
+.chess {
+  @apply min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white p-4;
+}
+
+.back-button {
+  @apply mb-4 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -31,6 +41,8 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+
+
 
 .tic-tac-toe button:hover {
     background: #eee;
@@ -140,4 +152,40 @@ body {
     border-radius: 10px;
     display: flex;
     gap: 15px;
+}
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 16px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.2s;
+  }
+  
+  .back-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+.tic-tac-toe .game-controls button {
+    width: 100px; /* đảm bảo đồng đều */
+    white-space: nowrap; /* không xuống dòng */
+    text-align: center;
+    font-weight: bold;
+}
+.tic-tac-toe .game-controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tic-tac-toe .game-controls button {
+    min-width: 100px;
+    padding: 10px 12px;
+    white-space: nowrap;
 }

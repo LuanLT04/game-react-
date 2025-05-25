@@ -2,8 +2,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTicTacToe } from "./hooks/useTicTacToe";
 import Button from "./components/Button";
 import Square from "./components/Square";
+import Chess from "./components/Chess";
+import Menu from "./components/Menu";
+import { useState } from "react";
 
 function App() {
+    const [selectedGame, setSelectedGame] = useState(null);
     const {
         squares,
         turn,
@@ -19,8 +23,30 @@ function App() {
         changeAiSide,
     } = useTicTacToe();
 
+    const handleBackToMenu = () => {
+        setSelectedGame(null);
+    };
+
+    if (!selectedGame) {
+        return <Menu onSelectGame={setSelectedGame} />;
+    }
+
+    if (selectedGame === 'chess') {
+        return (
+            <div className="chess">
+                <button onClick={handleBackToMenu} className="back-button">
+                    ← Back to Menu
+                </button>
+                <Chess />
+            </div>
+        );
+    }
+
     return (
         <div className="tic-tac-toe">
+            <button onClick={handleBackToMenu} className="back-button">
+                ← Back to Menu
+            </button>
             <h1>
                 Tic Tac Toe Game
                 {isAiMode
@@ -156,7 +182,7 @@ function App() {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </div>
+        </div>      
     );
 }
 
